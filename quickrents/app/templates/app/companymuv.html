@@ -1,0 +1,58 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}MUV{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+   <div class="list-group">
+       <a href="{% url 'companymuv' %}" class="list-group-item list-group-item-action" aria-current="true">
+        All Brand Cars
+       </a>
+      <a href="{% url 'companymuv_data' 'Audi' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Audi
+       </a>
+      <a href="{% url 'companymuv_data' 'Toyota' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Toyota
+       </a>
+       <a href="{% url 'companymuv_data' 'Hyundai' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Hyundai
+       </a>
+       <a href="{% url 'companymuv_data' 'Ford' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Ford
+       </a>
+       <a href="{% url 'companymuv_data' 'Honda' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Honda
+       </a>
+       <a href="{% url 'companymuv_data' 'Mercedes' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Mercedes
+       </a>
+       <a href="{% url 'companymuv_data' 'BMW' %}" class="list-group-item list-group-item-action" aria-current="true">
+        BMW
+       </a>
+       <a href="{% url 'companymuv_data' 'Volvo' %}" class="list-group-item list-group-item-action" aria-current="true">
+        Volvo
+       </a>
+       <a href="{% url 'companymuv_data' 'KIA' %}" class="list-group-item list-group-item-action" aria-current="true">
+        KIA
+       </a>
+   </div>
+  </div>
+  <div class="col-sm-8">
+   <div class="row">
+    {% for b in cars %}
+        <div class="col-sm-4 text-center mb-4">
+            <a href="{% url 'product-detail' b.id %}" class="btn">
+                <div class="item">
+                    <img src="{{b.car_image.url}}" alt="" height="300" width="300"  class="">
+                    <div class="fw-bold">{{b.title}}</div>
+                    <div class="fw-bold">Rs/km{{b.renting_price}}</div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

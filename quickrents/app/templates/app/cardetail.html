@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Detail{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-6 text-center align-self-center">
+   <img src="{{car.car_image.url}}" alt="" class="img-fluid img-thumbnail">
+  </div>
+  <div class="col-sm-5 offset-sm-1">
+   <h2>Product Title: {{car.title}}</h2>
+   <hr>
+   <p>{{car.description}}</p> <br>
+   <h4>Rs/day {{car.renting_price}}</h4> <br>
+   <h4>Mileage kmpl : {{car.mileage}}</h4> <br>
+   
+
+   <form action="/add-to-cart" class="d-inline">
+    <input type="hidden" name="car_id" value={{car.id}} id="car_id">
+    <button type="submit" class="btn btn-primary shadow px-5 py-1">Add To List</button>
+  </form>
+
+
+
+   <a href="{% url 'buy-now' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Book Now</a>
+   <h5 class="mt-5">Note</h5>
+   <ul>
+    <li>Driver would be allocated with the car.</li>
+    <li>Extra charges would be applied if your driving kms exceeds given range.</li>
+    <li>Charges may vary according to the vehicle.</li>
+   </ul>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
